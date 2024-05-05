@@ -1,5 +1,7 @@
 # journal
 
+This code is based on the tutorial presented by brimigs on [Solana Youtube Channel](https://www.youtube.com/watch?v=cW-3jGWq1IE&)*.
+
 This project is generated with the [create-solana-dapp](https://github.com/solana-developers/create-solana-dapp) generator.
 
 ## Getting Started
@@ -94,3 +96,26 @@ Build the web app
 ```shell
 npm run build
 ```
+
+
+## Notes
+
+I have used bun for running the commands instead of npm.
+
+To fix the deploy issue, I had to add some SOL to the wallet.
+
+```shell
+josenaves@skymac anchor % solana airdrop 2 --url devnet
+Requesting airdrop of 2 SOL
+
+Signature: 3c67tuq6ow3Nk3AVPBvty4my3bqp1T2mNyL7FAMHbsYNU7Lgi3gmrDSksmvWGcFKXmMNtyoUMxUXZ3DAwZevBxrn
+
+2.49443484 SOL
+```
+
+```shell
+josenaves@skymac anchor % solana balance --url devnet
+2.49443484 SOL
+```
+
+I have also used Bun instead of npm / npx. 😉

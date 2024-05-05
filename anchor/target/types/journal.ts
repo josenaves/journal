@@ -1,191 +1,237 @@
 export type Journal = {
-  version: '0.1.0';
-  name: 'journal';
-  instructions: [
+  "version": "0.1.0",
+  "name": "journal",
+  "instructions": [
     {
-      name: 'close';
-      accounts: [
+      "name": "createEntry",
+      "accounts": [
         {
-          name: 'payer';
-          isMut: true;
-          isSigner: true;
+          "name": "journalEntry",
+          "isMut": true,
+          "isSigner": false
         },
         {
-          name: 'journal';
-          isMut: true;
-          isSigner: false;
-        }
-      ];
-      args: [];
-    },
-    {
-      name: 'decrement';
-      accounts: [
-        {
-          name: 'journal';
-          isMut: true;
-          isSigner: false;
-        }
-      ];
-      args: [];
-    },
-    {
-      name: 'increment';
-      accounts: [
-        {
-          name: 'journal';
-          isMut: true;
-          isSigner: false;
-        }
-      ];
-      args: [];
-    },
-    {
-      name: 'initialize';
-      accounts: [
-        {
-          name: 'payer';
-          isMut: true;
-          isSigner: true;
+          "name": "owner",
+          "isMut": true,
+          "isSigner": true
         },
         {
-          name: 'journal';
-          isMut: true;
-          isSigner: true;
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "title",
+          "type": "string"
         },
         {
-          name: 'systemProgram';
-          isMut: false;
-          isSigner: false;
+          "name": "message",
+          "type": "string"
         }
-      ];
-      args: [];
+      ]
     },
     {
-      name: 'set';
-      accounts: [
+      "name": "updateEntry",
+      "accounts": [
         {
-          name: 'journal';
-          isMut: true;
-          isSigner: false;
-        }
-      ];
-      args: [
+          "name": "journalEntry",
+          "isMut": true,
+          "isSigner": false
+        },
         {
-          name: 'value';
-          type: 'u8';
+          "name": "owner",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
         }
-      ];
+      ],
+      "args": [
+        {
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "name": "newMessage",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "deleteEntry",
+      "accounts": [
+        {
+          "name": "journalEntry",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "owner",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "title",
+          "type": "string"
+        }
+      ]
     }
-  ];
-  accounts: [
+  ],
+  "accounts": [
     {
-      name: 'journal';
-      type: {
-        kind: 'struct';
-        fields: [
+      "name": "journalEntryState",
+      "type": {
+        "kind": "struct",
+        "fields": [
           {
-            name: 'count';
-            type: 'u8';
+            "name": "owner",
+            "type": "publicKey"
+          },
+          {
+            "name": "title",
+            "type": "string"
+          },
+          {
+            "name": "message",
+            "type": "string"
+          },
+          {
+            "name": "entryId",
+            "type": "u64"
           }
-        ];
-      };
+        ]
+      }
     }
-  ];
+  ]
 };
 
 export const IDL: Journal = {
-  version: '0.1.0',
-  name: 'journal',
-  instructions: [
+  "version": "0.1.0",
+  "name": "journal",
+  "instructions": [
     {
-      name: 'close',
-      accounts: [
+      "name": "createEntry",
+      "accounts": [
         {
-          name: 'payer',
-          isMut: true,
-          isSigner: true,
+          "name": "journalEntry",
+          "isMut": true,
+          "isSigner": false
         },
         {
-          name: 'journal',
-          isMut: true,
-          isSigner: false,
+          "name": "owner",
+          "isMut": true,
+          "isSigner": true
         },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        }
       ],
-      args: [],
+      "args": [
+        {
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "name": "message",
+          "type": "string"
+        }
+      ]
     },
     {
-      name: 'decrement',
-      accounts: [
+      "name": "updateEntry",
+      "accounts": [
         {
-          name: 'journal',
-          isMut: true,
-          isSigner: false,
+          "name": "journalEntry",
+          "isMut": true,
+          "isSigner": false
         },
+        {
+          "name": "owner",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        }
       ],
-      args: [],
+      "args": [
+        {
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "name": "newMessage",
+          "type": "string"
+        }
+      ]
     },
     {
-      name: 'increment',
-      accounts: [
+      "name": "deleteEntry",
+      "accounts": [
         {
-          name: 'journal',
-          isMut: true,
-          isSigner: false,
+          "name": "journalEntry",
+          "isMut": true,
+          "isSigner": false
         },
+        {
+          "name": "owner",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        }
       ],
-      args: [],
-    },
-    {
-      name: 'initialize',
-      accounts: [
+      "args": [
         {
-          name: 'payer',
-          isMut: true,
-          isSigner: true,
-        },
-        {
-          name: 'journal',
-          isMut: true,
-          isSigner: true,
-        },
-        {
-          name: 'systemProgram',
-          isMut: false,
-          isSigner: false,
-        },
-      ],
-      args: [],
-    },
-    {
-      name: 'set',
-      accounts: [
-        {
-          name: 'journal',
-          isMut: true,
-          isSigner: false,
-        },
-      ],
-      args: [
-        {
-          name: 'value',
-          type: 'u8',
-        },
-      ],
-    },
+          "name": "title",
+          "type": "string"
+        }
+      ]
+    }
   ],
-  accounts: [
+  "accounts": [
     {
-      name: 'journal',
-      type: {
-        kind: 'struct',
-        fields: [
+      "name": "journalEntryState",
+      "type": {
+        "kind": "struct",
+        "fields": [
           {
-            name: 'count',
-            type: 'u8',
+            "name": "owner",
+            "type": "publicKey"
           },
-        ],
-      },
-    },
-  ],
+          {
+            "name": "title",
+            "type": "string"
+          },
+          {
+            "name": "message",
+            "type": "string"
+          },
+          {
+            "name": "entryId",
+            "type": "u64"
+          }
+        ]
+      }
+    }
+  ]
 };
